@@ -25,7 +25,7 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
-        <Header siteTitle={"simple-keyboard + Gatbsy"} />
+        <Header siteTitle={"simple-keyboard + gatsby"} />
         <div
           style={{
             margin: `0 auto`,
