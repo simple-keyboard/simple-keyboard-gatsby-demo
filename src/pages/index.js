@@ -17,19 +17,15 @@ class IndexPage extends Component {
     if (window) {
       import("simple-keyboard").then(KeyboardClass => {
         const Keyboard = KeyboardClass.default
+        const { onChange, onKeyPress } = this;
 
-        this.keyboard = new Keyboard({
-          onChange: input => this.onChange(input),
-          onKeyPress: button => this.onKeyPress(button),
-        })
+        this.keyboard = new Keyboard({ onChange, onKeyPress });
       })
     }
   }
 
   onChange = input => {
-    this.setState({
-      input: input,
-    })
+    this.setState({ input });
     console.log("Input changed", input)
   }
 
@@ -53,14 +49,8 @@ class IndexPage extends Component {
 
   onChangeInput = event => {
     let input = event.target.value
-    this.setState(
-      {
-        input: input,
-      },
-      () => {
-        this.keyboard.setInput(input)
-      }
-    )
+    this.setState({ input });
+    this.keyboard.setInput(input);
   }
 
   render() {
@@ -69,9 +59,9 @@ class IndexPage extends Component {
         <input
           value={this.state.input}
           placeholder={"Tap on the virtual keyboard to start"}
-          onChange={e => this.onChangeInput(e)}
+          onChange={this.onChangeInput}
         />
-        <div className={`simple-keyboard`} />
+        <div className="simple-keyboard" />
       </Layout>
     )
   }
