@@ -39,7 +39,7 @@ class IndexPage extends Component {
   }
 
   handleShift = () => {
-    let oldLayout = this.layoutName
+    const oldLayout = this.layoutName
     this.layoutName = oldLayout === "default" ? "shift" : "default"
 
     this.keyboard.setOptions({
